@@ -1,13 +1,26 @@
-title: zcy0207.tk
-email: your-email@example.com
-description: >- # this means to ignore newlines until "baseurl:"
-  Here is zcy's new blog.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://zcy0207.tk
-github_username:  zhuchengyang0207
+# Site settings
+name: ZCY's_blog
+email: zhuchengyangclever@163.com
+author: Andy Zhu
+url: https://zhuchengyang0207.github.io
+resume_site: https://zhuchengyang0207.github.io
+github: https://github.com/zhuchengyang0207/
+baseurl: ""
+description: Actually, less is more!
+meta_description: 朱程炀;个人博客
+motto: Never too old to learn.
+banner: 谁怕，一蓑烟雨任平生！
+
+#permalink: /:categories/:year/:month/:day/:title/
+permalink: /:year/:month/:day/:title/
+paginate: 10
+
+exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile']
+
+github_username: zhuchengyang0207
 
 # Build settings
 markdown: kramdown
-theme: minima
-plugins:
-  - jekyll-feed
+
+baidu_analysis: 94be4b0f9fc5d94cc0d0415ea6761ae9
+
