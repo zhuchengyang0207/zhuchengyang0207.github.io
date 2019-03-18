@@ -45,7 +45,7 @@ type
         ......
     end;
 ```
-这时Class2就会继承Class1
+这时`Class2`就会继承`Class1`
 
 ### 0x03 泛型
 
