@@ -52,11 +52,11 @@ type
 Pascal中的泛型与C++中的泛型不同，而与Java中的泛型相似，如：
 ```pascal
 type
-    generic Class1&lt;T&gt;=class
+    generic Class1<T>=class
         a:T;
         ......
     end;
-    Class1Int=specialize Class1&lt;longint&gt;;
+    Class1Int=specialize Class1<longint>;
 var
     Object1:Class1Int;
 ```
