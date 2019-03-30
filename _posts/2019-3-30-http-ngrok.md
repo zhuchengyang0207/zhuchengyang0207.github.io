@@ -15,3 +15,5 @@ tag: 开发
 详见[这里](http://ngrok.ciqiuwl.cn/)
 
 测试成功了
+
+支持`socket`直接连接和使用`http`协议浏览器连接
