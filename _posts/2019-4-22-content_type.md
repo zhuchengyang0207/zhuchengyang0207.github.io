@@ -8,7 +8,7 @@ tag: http协议详解
 * content
 {:toc}
 
-之前我写的zul_seever犯了一个灰常重大的错误。。。
+之前我写的zul_server犯了一个灰常重大的错误。。。
 
 怎么能无论对于什么请求都返回`Content-Type: text/html`呢？！
 
