@@ -14,7 +14,7 @@ tag: http协议详解
 
 下面给出`zul_http.pas`的接口部分：
 
-```pas
+```pascal
 {$mode objfpc}
 unit zul_http;
 interface
