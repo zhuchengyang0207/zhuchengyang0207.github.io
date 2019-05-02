@@ -1,6 +1,6 @@
 ---
 layout: post
-title: urlmon的使用
+title: property的使用
 date: 2019-5-2 21:27:30 +0800
 tag: FreePascal语法
 ---
