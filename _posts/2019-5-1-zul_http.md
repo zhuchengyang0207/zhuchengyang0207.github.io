@@ -68,8 +68,8 @@ var
   display.status_number:=200;
   display.status:='OK';
   setlength(display.opt,1);
-  display.opt[1].key:='Content-Type';
-  display.opt[1].value:='text/html';
+  display.opt[0].key:='Content-Type';
+  display.opt[0].value:='text/html';
   if req.url='/' then //筛选
    s:=s+'!';
   display.data:='<html><body><h1>'+s+'</h1></body></html>';
