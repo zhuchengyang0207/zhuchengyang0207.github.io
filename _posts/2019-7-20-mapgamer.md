@@ -12,6 +12,8 @@ tag: 虚拟软件发布会
 
 只有这么多功能了，`dll`版可能会出
 
+[下载](https://github.com/zhuchengyang0207/resource/tree/master/zul_mapgamer)
+
 还是只放上来接口部分：
 
 ```pascal
