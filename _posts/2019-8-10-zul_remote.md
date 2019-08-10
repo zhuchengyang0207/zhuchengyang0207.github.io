@@ -8,7 +8,7 @@ tag: 虚拟软件发布会
 * content
 {:toc}
 
-因为之前的`Teamviewer`被检测为商业用途了，故自己用`zul_socket`写一个极其简陋但是还是可以用的版本
+因为之前我在用的`Teamviewer`被检测为商业用途了，故自己用`zul_socket`写一个极其简陋但是还是可以用的版本
 
 [Download](https://github.com/zhuchengyang0207/resource/tree/master/zul_remote)
 
