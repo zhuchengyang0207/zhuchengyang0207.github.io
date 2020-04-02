@@ -1,0 +1,53 @@
+<html>
+	<head>
+		<title>TEST</title>
+		<script src="https://cdn.bootcss.com/blueimp-md5/1.1.0/js/md5.js"></script>  
+		<script>
+			function hex2int(a){
+				if("0"<=a&&a<="9")
+					return a.charCodeAt()-48;
+				else
+					return a.charCodeAt()-55;
+			}
+			function crypt(key){
+				const ciphertext="000B004400074EFE59116617000B001400030006FF384E348FF3594550F76C9367304E888B878D43675CFF3C4E1556C54E886C2853E367528D0E750CFF3D0004001700420007000E0047000A65D98A3400130009000E00160042000900080049000A4EF259118BE56B7567258BC24EB2FF3562254ED47EFC659B838E7B1E4E3730360005001B00480006000E0049000C4ECC74124E394E1E4E82571053C24E3380FE303D954B60516B783033FF3480FE5209202E571F591D61064F686BEC7FC49E2DFF35571A5707610B4E038FEA743E67A530305910954D57074E71673065C25C05FF346B5660517EC77EC265D47EE4672B303A2025622362B376B665C1502D622854C954854EBE4E324E32FF3E4E3A77D1906A4E0E4EF84E7030300005001D0047000A0005004400065531004C6B5D605A7EC27EC165D97EE9672755722014201F000E001800440007";
+				const len=ciphertext.length,len2=key.length;
+				var cipher2="";
+				for(var i=0;i<len/4;i++){
+					console.log(i);
+					console.log((hex2int(ciphertext[i*4  ])*4096+
+						         hex2int(ciphertext[i*4+1])*256+
+						         hex2int(ciphertext[i*4+2])*16+
+						         hex2int(ciphertext[i*4+3]))^(key[i%len2]).charCodeAt());
+					console.log(hex2int(ciphertext[i*4  ])*4096+
+						        hex2int(ciphertext[i*4+1])*256+
+						        hex2int(ciphertext[i*4+2])*16+
+						        hex2int(ciphertext[i*4+3]));
+					cipher2+=String.fromCharCode((
+						hex2int(ciphertext[i*4  ])*4096+
+						hex2int(ciphertext[i*4+1])*256+
+						hex2int(ciphertext[i*4+2])*16+
+						hex2int(ciphertext[i*4+3]))
+						^(key[i%len2]).charCodeAt());
+				}
+				return cipher2;
+			}
+			function check(){
+				var psw=document.getElementById("psw").value;
+				if(md5("2019S9S11S"+psw)=="4e923271d2af39f00a594568dd97085c"){
+					document.getElementById("main").innerHTML=crypt(psw);
+					document.getElementById("verify").innerHTML="";
+				}else
+					alert("Password Wrong.\n\rAccess Denied");
+			}
+		</script>
+	</head>
+	<body>
+		<div id="verify">
+			<p>Password:</p>
+			<input type="password" id="psw">
+			<button onclick="check()">Submit</button>
+		</div>
+		<div id="main"></div>
+	</body>
+</html>

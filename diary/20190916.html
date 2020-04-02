@@ -1,0 +1,53 @@
+<html>
+	<head>
+		<title>TEST</title>
+		<script src="https://cdn.bootcss.com/blueimp-md5/1.1.0/js/md5.js"></script>  
+		<script>
+			function hex2int(a){
+				if("0"<=a&&a<="9")
+					return a.charCodeAt()-48;
+				else
+					return a.charCodeAt()-55;
+			}
+			function crypt(key){
+				const ciphertext="000B004400074EFE5911622953B453CB4F6E4E2D67186C98673D51A173D57E9588924E964E3D538FFF3580355E3057108B8053C94E3895D9202867087A3F70B8661762234ED573DF76B35423FF262029FF34004A004356E74EB44E3753D120254E3966172025000E00160042000900080049000A666281D24E524E32622354BB004C005456EA5B8E76BC65C45020004A005A95DA622854B8004A00494EF24E7151417CCCFF3862288BC06C99673151417CC2FF3E004500454E66571C57020004001D0049000C000B00440007594D8BCC594159BA89B87EEB594E4E444E398FB281D288748F54FF3553AD675276B0909A8FB24E355E1E8FF5675C4EB4FF3B8FEC673089B57EE15941917F00760079956B000800160044000600040042000762235C0663914EBF4E3453DDFF22202E67304E888BC38FF35940646C63B17704956E54B565465B8E59058D1C4F0876BC2025000E00160042000900080049000A4EC3741EFF282025005E005E00410055005D00530059005B8BCD76B6202AFF386228FF2E20244E35661D004A004B8BC376B0542E20290018004A0043FF23202E005B005800528BC076BC2025000E00160042000900080049000A62298BDD650C62724EB4557D557E5573557E4E3580C551BF8FE068054EB10008001600440006";
+				const len=ciphertext.length,len2=key.length;
+				var cipher2="";
+				for(var i=0;i<len/4;i++){
+					console.log(i);
+					console.log((hex2int(ciphertext[i*4  ])*4096+
+						         hex2int(ciphertext[i*4+1])*256+
+						         hex2int(ciphertext[i*4+2])*16+
+						         hex2int(ciphertext[i*4+3]))^(key[i%len2]).charCodeAt());
+					console.log(hex2int(ciphertext[i*4  ])*4096+
+						        hex2int(ciphertext[i*4+1])*256+
+						        hex2int(ciphertext[i*4+2])*16+
+						        hex2int(ciphertext[i*4+3]));
+					cipher2+=String.fromCharCode((
+						hex2int(ciphertext[i*4  ])*4096+
+						hex2int(ciphertext[i*4+1])*256+
+						hex2int(ciphertext[i*4+2])*16+
+						hex2int(ciphertext[i*4+3]))
+						^(key[i%len2]).charCodeAt());
+				}
+				return cipher2;
+			}
+			function check(){
+				var psw=document.getElementById("psw").value;
+				if(md5("2019S9S16S"+psw)=="c5654e1610d1d55c7b670ea0c432df35"){
+					document.getElementById("main").innerHTML=crypt(psw);
+					document.getElementById("verify").innerHTML="";
+				}else
+					alert("Password Wrong.\n\rAccess Denied");
+			}
+		</script>
+	</head>
+	<body>
+		<div id="verify">
+			<p>Password:</p>
+			<input type="password" id="psw">
+			<button onclick="check()">Submit</button>
+		</div>
+		<div id="main"></div>
+	</body>
+</html>

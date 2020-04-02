@@ -1,0 +1,53 @@
+<html>
+	<head>
+		<title>TEST</title>
+		<script src="https://cdn.bootcss.com/blueimp-md5/1.1.0/js/md5.js"></script>  
+		<script>
+			function hex2int(a){
+				if("0"<=a&&a<="9")
+					return a.charCodeAt()-48;
+				else
+					return a.charCodeAt()-55;
+			}
+			function crypt(key){
+				const ciphertext="000B004400079A584E325C0989B34E9D53454EB1FF388FE051D459116BF7591B90C4571A7F217A3F803A8BE130398B8A8BCCFF3590CF6C96673D4EF94E7C65CE95CC51AB65DC8B823035000800160044000600040042000767328FE657CE67154E3E5E4B577F6BFD5910538962644E346B187BDA743BFF340003000900020007005953F4803857C267144E386C98673B60394E7C8DE88FF30004001700420007000E0047000A81D35DC5522F76BC8B93522B5FBA592D6C9567305BAA7388FF345E3E6722571A0001591D76BD824482DE8B957EF14E72543C80CA8FF1902660565935520853AD517176B68B9652264E724E19FF34605A593F52094E79527A5B524E5976B070D560FDFF3A59BB67AE4E8D752B90D1523253D763394E77532FFF3B000B001B0049000A";
+				const len=ciphertext.length,len2=key.length;
+				var cipher2="";
+				for(var i=0;i<len/4;i++){
+					console.log(i);
+					console.log((hex2int(ciphertext[i*4  ])*4096+
+						         hex2int(ciphertext[i*4+1])*256+
+						         hex2int(ciphertext[i*4+2])*16+
+						         hex2int(ciphertext[i*4+3]))^(key[i%len2]).charCodeAt());
+					console.log(hex2int(ciphertext[i*4  ])*4096+
+						        hex2int(ciphertext[i*4+1])*256+
+						        hex2int(ciphertext[i*4+2])*16+
+						        hex2int(ciphertext[i*4+3]));
+					cipher2+=String.fromCharCode((
+						hex2int(ciphertext[i*4  ])*4096+
+						hex2int(ciphertext[i*4+1])*256+
+						hex2int(ciphertext[i*4+2])*16+
+						hex2int(ciphertext[i*4+3]))
+						^(key[i%len2]).charCodeAt());
+				}
+				return cipher2;
+			}
+			function check(){
+				var psw=document.getElementById("psw").value;
+				if(md5("2019S7S11S"+psw)=="9395199fe578d3362f7b4eee1a5e6f6d"){
+					document.getElementById("main").innerHTML=crypt(psw);
+					document.getElementById("verify").innerHTML="";
+				}else
+					alert("Password Wrong.\n\rAccess Denied");
+			}
+		</script>
+	</head>
+	<body>
+		<div id="verify">
+			<p>Password:</p>
+			<input type="password" id="psw">
+			<button onclick="check()">Submit</button>
+		</div>
+		<div id="main"></div>
+	</body>
+</html>
